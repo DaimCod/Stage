@@ -18,6 +18,11 @@ public class Person {
 	}
 	
 	public String bornYear() {
+		
+		if(this.getTax_code() == null) {
+			return "Error: invalid tax code";
+		}
+		
 		String year = this.tax_code.substring(6, 8);
 		int tmp = Integer.parseInt(year);
 		

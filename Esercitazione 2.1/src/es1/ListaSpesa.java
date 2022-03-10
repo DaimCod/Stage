@@ -7,7 +7,8 @@ public class ListaSpesa {
 	public static void main(String[] args) {
 		
 		Cliente c1 = new Cliente(true);
-		int selezione = 0, costoTotale = 0;
+		int costoTotale = 0, conversioneSelezione = 0;
+		String selezione = "";
 
 		Prodotto[] prodotto = new Prodotto[5];
 		prodotto[0] = new ProdottoAlimentare("0111", "Bistecca di manzo", 8, 1646089200000L);
@@ -21,13 +22,30 @@ public class ListaSpesa {
 			for(int j = 0; j < 5; j++) {
 				System.out.println((j+1)+"."+prodotto[j]);
 			}
+
+			boolean isInvalid;
 			do {
-				System.out.print("seleziona tra 1 e 5 (estremi inclusi): ");
-				selezione = tastiera.nextInt();
-			}while(selezione < 0 || selezione > 5);
+				do {
+					isInvalid = false;
+					selezione = "";
+					System.out.println("Rispondere con un numero");
+					System.out.print("Risposta: ");
+					selezione = tastiera.next();
+					for(int k = 0; k < selezione.length() && !isInvalid; k++) {
+						if(selezione.charAt(k) < '0' || selezione.charAt(k) > '9')
+							isInvalid = true;
+					}
+				}while(isInvalid == true);
+				conversioneSelezione = Integer.parseInt(selezione);
+				if(conversioneSelezione > 5 || conversioneSelezione < 1) {
+					System.out.println("Devi inserire un numero tra 1 e 5");
+					isInvalid = true;
+				}
+			}while(isInvalid == true);
+			
 				
 			if(c1.getTesseraFedeltà() == true) {
-				switch(selezione) {
+				switch(conversioneSelezione) {
 					case 1:
 						costoTotale += prodotto[0].applicaSconto();
 						break;
@@ -46,7 +64,7 @@ public class ListaSpesa {
 				}
 			}
 			else {
-				switch(selezione) {
+				switch(conversioneSelezione ) {
 				case 1:
 					costoTotale += prodotto[0].getPrezzo();
 					break;

@@ -1,21 +1,21 @@
 package esercizio5;
 
+public class MultipleQuestion extends NumericQuestion {
 
-public class NumericQuestion extends Question {
-
-	public NumericQuestion() {
+	private int multipleChoice;
+	
+	public MultipleQuestion() {
 
 	}
 
-	public NumericQuestion(String domanda, String risposta, int punteggio) {
+	public MultipleQuestion(String domanda, String risposta, int punteggio, int n) {
 		super(domanda, risposta, punteggio);
-		
+		this.multipleChoice = n;
 	}
 	
 	@Override
 	public int ask() {
-		
-		String risposta;
+		String risposta = "";
 		boolean isInvalid;
 		do {
 			isInvalid = false;
@@ -30,11 +30,15 @@ public class NumericQuestion extends Question {
 				
 			}
 		}while(isInvalid == true);
+		
 		if(Integer.parseInt(this.getRispostaCorretta()) == Integer.parseInt(risposta))
 			return this.getPunteggio();
 		else
 			return 0;
-					
+	}
+	
+	public int getMultipleChoice() {
+		return multipleChoice;
 	}
 
 }
