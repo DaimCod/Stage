@@ -16,6 +16,24 @@ class Esercitazione1{
     secondoEsercizio();
     System.out.println("**********Terzo Esercizio**********");
     terzoEsercizio();
+    System.out.println("**********Quarto Esercizio**********");
+    quartoEsercizio();
+  }
+
+  static void quartoEsercizio(){
+    String[] ar1 = {"Casa", "Sole", "Terra", "Stelle", "Computer"};
+    String[] ar2 = {"Tavolo", "Luna", "Marte", "Stelle", "Macchina"};
+    boolean oneEqual = false;
+    for(int i = 0; i < ar1.length && !oneEqual; i++){
+      for(int j = 0; j < ar2.length && !oneEqual; j++){
+        if(ar1[i].equalsIgnoreCase(ar2[j]))
+          oneEqual = true;
+      }
+    }
+    if(oneEqual == true)
+      System.out.println("OK");
+    else
+        System.out.println("KO");
   }
 
   static void eserciziStringhe(){
