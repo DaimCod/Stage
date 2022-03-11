@@ -22,7 +22,7 @@ class Esercitazione1{
 
   static void quartoEsercizio(){
     String[] ar1 = {"Casa", "Sole", "Terra", "Stelle", "Computer"};
-    String[] ar2 = {"Tavolo", "Luna", "Marte", "Stelle", "Macchina"};
+    String[] ar2 = {"Tavolo", "Luna", "Marte", "Vestiti", "Macchina"};
     boolean oneEqual = false;
     for(int i = 0; i < ar1.length && !oneEqual; i++){
       for(int j = 0; j < ar2.length && !oneEqual; j++){
