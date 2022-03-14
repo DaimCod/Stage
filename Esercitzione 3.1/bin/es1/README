@@ -1,0 +1,4 @@
+Dopo aver ripetuto l'esercizio con ArrayList posso confermare che l'unico metodo
+da cambiare è quello dell'aggiunta degli elementi in quanto viene viene creata una Struttura dati
+di supporto dello stesso tipo della collection nel metodo chiamante.
+Il metodo stampa() rimane invariato
