@@ -81,9 +81,11 @@ public class Erogazione {
 				System.out.println("Inserire numero tessera");
 				numeroTessera = tastiera.next();
 				
-				if(numeroTessera.charAt(0) < '1' || numeroTessera.charAt(0) > '9') {
-					System.out.println("Il codice è composto da solo numeri");
-					isInvalid = true;
+				for(int i=0; i<numeroTessera.length(); i++) {
+					if(numeroTessera.charAt(i) < '0' || numeroTessera.charAt(i) > '9') {
+						System.out.println("Il codice è composto da solo numeri");
+						isInvalid = true;
+					}
 				}
 			}while(isInvalid == true);
 			
