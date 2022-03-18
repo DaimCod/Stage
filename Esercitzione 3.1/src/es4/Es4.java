@@ -5,12 +5,26 @@ import java.util.Scanner;
 public class Es4 {
 
 	public static void main(String[] args) {
-		int n = 0;
+		String n = "";
 		Scanner tastiera = new Scanner(System.in);
-		System.out.print("Inserire un numero: ");
-		n = tastiera.nextInt();
+		
+		boolean isInvalid;
+		do {
+			isInvalid = false;
+			n = "";
+			System.out.println("Inserire un numero");
+			n = tastiera.next();
+			
+			for(int i=0; i<n.length(); i++)
+				if(n.charAt(i) < '0' || n.charAt(i) > '9') {
+					isInvalid = true;
+				}
+		}while(isInvalid == true);
+		
+		int num = Integer.parseInt(n);
+		
 		LinkedList<LinkedList<Integer>> result;
-		result = insiemeDiInsiemi(n);
+		result = insiemeDiInsiemi(num);
 		
 		stampa(result);
 	}

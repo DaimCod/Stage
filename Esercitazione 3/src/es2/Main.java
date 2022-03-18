@@ -13,22 +13,32 @@ public class Main {
 		tessera.put(2, t2);
 		tessera.put(3, t3);
 		
-		System.out.println("Dato che siamo davanti ad una macchinetta "
-				+ "c'e' la presenza di solo tastierino numerico\nquindi l'utente "
-				+ "pur volendo inserire una stringa non ci riescirebbe e per questo\n"
-				+ "non ho gestito le stringhe");
-		
-		int scelta = 0;
+		String scelta = "";
 	
 		System.out.println("Di quale carta si vuole avere i dettagli?");
 		System.out.println("Le tue tessere sono:");
 		for(int key : tessera.keySet()) {
 			System.out.println(key + " Codice: " + tessera.get(key).getCodice());
 		}
-		System.out.print("Effettuare una scelta: ");
-		scelta = tastiera.nextInt();
-		if(tessera.containsKey(scelta)) {
-			System.out.println("Credito presente nella tessera numero: "+ tessera.get(scelta).getCodice() + " e' pari a: " +tessera.get(scelta).getCreditoDisponibile());
+		
+		boolean isInvalid;
+		do {
+			isInvalid = false;
+			scelta = "";
+			System.out.print("Effettuare una scelta: ");
+			scelta = tastiera.next();
+			
+			for(int i=0; i<scelta.length(); i++)
+			if(scelta.charAt(i) < '1' || scelta.charAt(i) > '9') {
+				System.out.println("Inserire un numero corrispondente a una tessera");
+				isInvalid = true;
+			}
+		}while(isInvalid == true); 
+		
+		int sceltaCon = Integer.parseInt(scelta);
+		
+		if(tessera.containsKey(sceltaCon)) {
+			System.out.println("Credito presente nella tessera numero: "+ tessera.get(sceltaCon).getCodice() + " e' pari a: " +tessera.get(sceltaCon).getCreditoDisponibile());
 		}
 		else
 			throw new TesseraNonValida("tessera non valida");

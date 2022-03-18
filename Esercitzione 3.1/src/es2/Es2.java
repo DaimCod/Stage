@@ -6,12 +6,27 @@ import java.util.Scanner;
 public class Es2 {
 	static Scanner tastiera = new Scanner(System.in);
 	public static void main(String[] args) {
-		int n;
-		System.out.println("Da quanti valori deve essere costituita?");
-		n = tastiera.nextInt();
-		LinkedList<Integer> ll = creaRandomCrescente(n);
+		int numCon = 0;
+		String numero = "";
 		
-		Iterator iter = ll.iterator();
+		boolean isInvalid;
+		do {
+			isInvalid = false;
+			numero = "";
+			System.out.println("Da quanti valori deve essere costituita?");
+			numero = tastiera.next();
+			
+			for(int i=0; i<numero.length(); i++)
+				if(numero.charAt(i) < '0' || numero.charAt(i) > '9') {
+					System.out.println("Inserire un numero che deve essere massimo");
+					isInvalid = true;
+				}
+		}while(isInvalid == true);
+		
+		numCon = Integer.parseInt(numero);
+		LinkedList<Integer> ll = creaRandomCrescente(numCon);
+		
+		Iterator<Integer> iter = ll.iterator();
 		stampa(iter);
 		
 		provaEx2();
@@ -41,10 +56,10 @@ public class Es2 {
 		a.add("9");
 		a.add("10");
 		//stringa che genera eccezione
-		a.add("ciao");
+		//a.add("ciao");
 		
 		LinkedList<Integer> number = parseString(a);
-		Iterator iter = number.iterator();
+		Iterator<Integer> iter = number.iterator();
 		stampa(iter);
 	}
 	
@@ -52,13 +67,13 @@ public class Es2 {
 		LinkedList<Integer> list = new LinkedList<>();
 		Iterator iter = a.iterator();
 		while(iter.hasNext()) {
-			int n = Integer.parseInt((String) iter.next());
+			int n = Integer.parseInt((String)iter.next());
 			list.add(n);
 		}
 		return list;
 	}
 	
-	public static void stampa(Iterator iter) {
+	public static void stampa(Iterator<Integer> iter) {
 		while(iter.hasNext()) {
 			System.out.print("<" + iter.next() + ">, ");
 		}

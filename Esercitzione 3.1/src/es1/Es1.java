@@ -23,7 +23,7 @@ public class Es1 {
 		return list;
 	}
 	
-	public static void stampa(Iterator iter) {
+	public static void stampa(Iterator<Integer> iter) {
 		while(iter.hasNext()) {
 			System.out.print("<" + iter.next() + ">, ");
 		}
@@ -33,24 +33,56 @@ public class Es1 {
 	public static void provaEx1() {
 		System.out.println("*****************LINKED LIST*****************");
 		
-		int n = 4, max;
+		int n = 4;
+		String max = "";
 		
-		System.out.print("Quale deve essere il max numero?");
-		max = tastiera.nextInt();
-		LinkedList<Integer> ll = creaRandom(n, max);
+		boolean isInvalid;
+		do {
+			isInvalid = false;
+			max = "";
+			System.out.print("Quale deve essere il max numero?");
+			max = tastiera.next();
+			
+			for(int i=0; i<max.length(); i++)
+				if(max.charAt(i) < '0' || max.charAt(i) > '9') {
+					System.out.println("Inserire un numero che deve essere massimo");
+					isInvalid = true;
+				}
+		}while(isInvalid == true);
 		
-		Iterator iter = ll.iterator();
+		int maxCon = Integer.parseInt(max);
+		
+		LinkedList<Integer> ll = creaRandom(n, maxCon);
+		
+		Iterator<Integer> iter = ll.iterator();
 		stampa(iter);
 	}
 	
 	public static void provaEx1Array() {
 		System.out.println("*****************ARRAY LIST*****************");
-		int n = 4, max;
-		System.out.print("Quale deve essere il max numero?");
-		max = tastiera.nextInt();
-		ArrayList<Integer> ll = creaRandomArray(n, max);
+		int n = 4;
 		
-		Iterator iter = ll.iterator();
+		String max = "";
+		
+		boolean isInvalid;
+		do {
+			isInvalid = false;
+			max = "";
+			System.out.print("Quale deve essere il max numero?");
+			max = tastiera.next();
+			
+			for(int i=0; i<max.length(); i++)
+				if(max.charAt(i) < '0' || max.charAt(i) > '9') {
+					System.out.println("Inserire un numero corrispondente a una tessera");
+					isInvalid = true;
+				}
+		}while(isInvalid == true);
+		
+		int maxCon = Integer.parseInt(max);
+		
+		ArrayList<Integer> ll = creaRandomArray(n, maxCon);
+		
+		Iterator<Integer> iter = ll.iterator();
 		stampa(iter);
 	}
 	
