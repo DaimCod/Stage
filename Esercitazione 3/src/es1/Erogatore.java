@@ -26,13 +26,32 @@ public class Erogatore {
 			}
 			System.out.println("0 per uscire");
 			String risposta = "";
-			System.out.print("Inserire un codice: ");
-			risposta = tastiera.next();
+			
+			boolean isInvalid;
+			do {
+				isInvalid = false;
+				risposta = "";
+				System.out.print("Codice: ");
+				risposta = tastiera.next();
+				boolean control = true;
+				
+				if(risposta.charAt(0) == '0')
+					control = false;
+				
+				for(int i=0; i<risposta.length() && control; i++) {
+					if(risposta.charAt(i) < 'A' || risposta.charAt(i) > 'Z') {
+						System.out.println("Inserire un codice");
+						isInvalid = true;
+					}
+				}
+				
+			}while(isInvalid == true);
 			
 			if(risposta.equals("0")) {
 				exit = true;
 				System.out.println("Uscita programma");
 			}
+			
 			else {
 				if(mappa.containsKey(risposta) == true)
 					System.out.println(mappa.get(risposta).getNome() + " " + mappa.get(risposta).getPrezzo());
